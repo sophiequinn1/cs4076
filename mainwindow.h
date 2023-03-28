@@ -16,9 +16,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_start_button_clicked();
 
-    void on_yes_checkbox_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
