@@ -6,6 +6,7 @@
 #include <QRadioButton>
 #include <QLabel>
 #include <QSlider>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +35,12 @@ private:
 
     QRadioButton *yes_radio;
     QRadioButton *no_radio;
+
+    QPushButton *recipeButton;
+
+    QLabel *mainLabel;
+    QLabel *vegLabel;
+    QLabel *cuisineLabel;
 
     QSlider *slider;
 

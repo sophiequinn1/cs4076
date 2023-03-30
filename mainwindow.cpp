@@ -20,33 +20,29 @@ QRadioButton *yes_radio;
 QRadioButton *no_radio;
 
 
-
+//makes radio boxes, check boxes and ui
+//get destroyed when main window is closed
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , chinese_check(new QCheckBox("Chinese", this))
+    , italian_check(new QCheckBox("Italian", this))
+    , mexican_check(new QCheckBox("Mexican", this))
+    , yes_radio(new QRadioButton("Yes", this))
+    , no_radio(new QRadioButton("No", this))
+    , recipeButton(new QPushButton("Click here!", this))
+    , mainLabel(new QLabel("Recipes"))
+    , vegLabel(new QLabel("Vegetarian?"))
+    , cuisineLabel(new QLabel("Cuisine"))
+
 
 
 {
     ui->setupUi(this);
     resize(300, 200);
 
-
-
-    chinese_check = new QCheckBox("Chinese", this);
-    italian_check = new QCheckBox("Italian", this);
-    mexican_check = new QCheckBox("Mexican", this);
-
-    yes_radio = new QRadioButton("Yes",this);
-    no_radio = new QRadioButton("No", this);
-
-    QPushButton *recipeButton = new QPushButton("Click here!", this);
-
-    QLabel *mainLabel = new QLabel("Recipes");
-    QLabel *vegLabel = new QLabel("Vegetarian?");
-    QLabel *cuisineLabel = new QLabel("Cuisine");
-
     QHBoxLayout *labelLayout = new QHBoxLayout;
-    labelLayout->addWidget(ui->mainLabel, 0, Qt::AlignCenter);
+    labelLayout->addWidget(ui->mainLabel, Qt::AlignCenter);
 
 
     QGridLayout *leftLayout = new QGridLayout;
@@ -78,11 +74,19 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(centralWidget);
 }
 
+    MainWindow::~MainWindow()
 
-MainWindow::~MainWindow()
 {
     delete ui;
+    delete chinese_check;
+    delete italian_check;
+    delete mexican_check;
+    delete yes_radio;
+    delete no_radio;
 }
+
+
+
 
 
 void MainWindow::showRecipe()
@@ -121,7 +125,9 @@ void MainWindow::showRecipe()
         msgBox.exec();
 
 
+
 }
+
 
 
 void MainWindow::on_recipeButton_clicked()
