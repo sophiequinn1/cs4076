@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>697</width>
-    <height>682</height>
+    <width>520</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 78, 96)
@@ -31,30 +34,32 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="mainLabel">
     <property name="geometry">
      <rect>
-      <x>-240</x>
-      <y>40</y>
-      <width>931</width>
+      <x>40</x>
+      <y>30</y>
+      <width>201</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Showcard Gothic</family>
-      <pointsize>50</pointsize>
+      <family>Tahoma</family>
+      <pointsize>26</pointsize>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
+     <string notr="true">color:rgb(255, 255, 255);
 
-font: 50pt &quot;Showcard Gothic&quot;;
+font: 700 26pt &quot;Tahoma&quot;;
+
+
 allign:centre;</string>
     </property>
     <property name="text">
@@ -67,60 +72,137 @@ allign:centre;</string>
    <widget class="QRadioButton" name="yes_radio">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>260</y>
-      <width>93</width>
+      <x>20</x>
+      <y>190</y>
+      <width>61</width>
       <height>26</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
-font: 700 10pt &quot;Berlin Sans FB Demi&quot;;
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 8pt &quot;Berlin Sans FB &quot;;
 border:none;</string>
     </property>
     <property name="text">
-     <string>YES</string>
+     <string>Yes</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="no_radio">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>260</y>
+      <x>80</x>
+      <y>190</y>
+      <width>61</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 8pt &quot;Berlin Sans FB &quot;;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="vegLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 10pt &quot;Berlin Sans FB Demi&quot;;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>VEGETARIAN</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="recipeButton">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>340</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  QPushButton:hover {
+    background-color: grey;  
+}
+
+QPushButton {background-color: rgb(216, 216, 216);
+  border: none;
+  color: rgb(0, 0, 0);
+  text-align: center; 
+ border-radius: 15px;
+padding: 10px;
+font: 900 10pt &quot;Segoe UI Black&quot;; }
+
+</string>
+    </property>
+    <property name="text">
+     <string>Click here!</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cuisineLabel">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>140</y>
+      <width>113</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 10pt &quot;Berlin Sans FB Demi&quot;;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>CUISINE</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="mexican_check">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>190</y>
       <width>93</width>
       <height>26</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
-font: 700 10pt &quot;Berlin Sans FB Demi&quot;;
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 8pt &quot;Berlin Sans FB &quot;;
 border:none;</string>
     </property>
     <property name="text">
-     <string>NO </string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="size_slider">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>300</y>
-      <width>160</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+     <string>Mexican</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="italian_check">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>420</y>
-      <width>112</width>
+      <x>200</x>
+      <y>230</y>
+      <width>93</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 8pt &quot;Berlin Sans FB &quot;;
+border:none;</string>
     </property>
     <property name="text">
      <string>Italian</string>
@@ -129,117 +211,31 @@ border:none;</string>
    <widget class="QCheckBox" name="chinese_check">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>490</y>
-      <width>112</width>
+      <x>200</x>
+      <y>280</y>
+      <width>93</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);
+font: 700 8pt &quot;Berlin Sans FB &quot;;
+border:none;</string>
     </property>
     <property name="text">
      <string>Chinese</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="mexican_check">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>420</y>
-      <width>112</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Mexican</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>200</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
-font: 700 18pt &quot;Berlin Sans FB Demi&quot;;
-border:none;</string>
-    </property>
-    <property name="text">
-     <string>VEGETARIAN</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="recipe_button">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>400</y>
-      <width>341</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">  background-color: rgb(216, 216, 216);
-  border: none;
-  color: rgb(0, 0, 0);
-  text-align: center; 
-   border-radius: 30px;
-font: 900 15pt &quot;Segoe UI Black&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>190</y>
-      <width>351</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
-font: 700 18pt &quot;Berlin Sans FB Demi&quot;;
-border:none;</string>
-    </property>
-    <property name="text">
-     <string>NO. OF PEOPLE TO FEED</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>350</y>
-      <width>113</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-color:rgb(255, 255, 255);
-font: 700 18pt &quot;Berlin Sans FB Demi&quot;;
-border:none;</string>
-    </property>
-    <property name="text">
-     <string>CUISINE</string>
-    </property>
-   </widget>
-   <zorder>label</zorder>
+   <zorder>mainLabel</zorder>
    <zorder>logo_label</zorder>
    <zorder>yes_radio</zorder>
    <zorder>no_radio</zorder>
-   <zorder>size_slider</zorder>
+   <zorder>vegLabel</zorder>
+   <zorder>recipeButton</zorder>
+   <zorder>cuisineLabel</zorder>
+   <zorder>mexican_check</zorder>
    <zorder>italian_check</zorder>
    <zorder>chinese_check</zorder>
-   <zorder>mexican_check</zorder>
-   <zorder>lineEdit</zorder>
-   <zorder>recipe_button</zorder>
-   <zorder>lineEdit_2</zorder>
-   <zorder>lineEdit_3</zorder>
   </widget>
  </widget>
  <resources/>
