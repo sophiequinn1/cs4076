@@ -41,42 +41,48 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     resize(300, 200);
 
-    QHBoxLayout *labelLayout = new QHBoxLayout;
-    labelLayout->addWidget(ui->mainLabel, Qt::AlignCenter);
+    //make box layout for  recipe label
+    QHBoxLayout *mainlabelLayout = new QHBoxLayout;
+    mainlabelLayout->addWidget(ui->mainLabel, Qt::AlignCenter);
 
 
+    //creating grid layout to store the radio buttons and corresponding label using row and column coordinates
     QGridLayout *leftLayout = new QGridLayout;
     leftLayout->addWidget(ui->vegLabel, 0, 0);
     leftLayout->addWidget(ui->yes_radio, 1, 0);
     leftLayout->addWidget(ui->no_radio, 2, 0);
 
+    //creating grid layout to store the check buttons and corresponding label using row and column coordinates
     QGridLayout *rightLayout = new QGridLayout;
     rightLayout->addWidget(ui->cuisineLabel, 0, 1);
     rightLayout->addWidget(ui->italian_check, 1, 1);
     rightLayout->addWidget(ui->mexican_check, 2, 1);
     rightLayout->addWidget(ui->chinese_check, 3, 1);
 
-    QHBoxLayout *topLayout = new QHBoxLayout;
-    topLayout->addStretch(1);
-    topLayout->addLayout(leftLayout);
-    topLayout->addLayout(rightLayout);
-    topLayout->addStretch(1);
+    // creates a centered horizontal layout with two child layouts, where the available space is distributed equally on either side of the child layouts.
+    QHBoxLayout *gridLayout = new QHBoxLayout;
+    gridLayout->addStretch(1);
+    gridLayout->addLayout(leftLayout);
+    gridLayout->addLayout(rightLayout);
+    gridLayout->addStretch(1);
 
+    //laying out several widgets and layouts in a vertical orientation within the "mainLayout" QVBoxLayout object
     QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addLayout(labelLayout);
+    mainLayout->addLayout(mainlabelLayout);
     mainLayout->addStretch(1);
-    mainLayout->addLayout(topLayout);
+    mainLayout->addLayout(gridLayout);
     mainLayout->addSpacing(20);
-    mainLayout->addWidget(ui->recipeButton, 0, Qt::AlignCenter);
+    mainLayout->addWidget(ui->recipeButton, Qt::AlignCenter);
 
-    QWidget *centralWidget = new QWidget(this);
-    centralWidget->setLayout(mainLayout);
-    setCentralWidget(centralWidget);
+    QWidget *frameWidget = new QWidget(this);
+    frameWidget->setLayout(mainLayout);
+    setCentralWidget(frameWidget);
 }
 
     MainWindow::~MainWindow()
 
 {
+    //free up memory
     delete ui;
     delete chinese_check;
     delete italian_check;
@@ -95,34 +101,35 @@ void MainWindow::showRecipe()
     QString vchineseRecipe = "<a href='https://www.bbc.co.uk/food/recipes/mushroom_and_broccoli_33092'>Mushroom and Broccoli Stir Fry</a>";
     QString italianRecipe = "<a href='https://www.bbc.co.uk/food/recipes/spaghettiallacarbona_73311'>Spaghetti Carbonara</a>";
     QString vitalianRecipe = "<a href='https://www.bbc.co.uk/food/recipes/aubergine_pasta_bake_51402'>Aubergine Pasta Bake</a>";
-    QString mexicanRecipe = "<a href='https://www.bbc.co.uk/food/recipes/chicken_and_bean_18392'>Chicken and Bean Burritos></a>";
+    QString mexicanRecipe = "<a href='https://www.bbc.co.uk/food/recipes/chicken_and_bean_18392'>Chicken and Bean Burritos</a>";
     QString vmexicanRecipe = "<a href='https://www.bbc.co.uk/food/recipes/kidney_bean_and_28819'>Kidney bean and sweetcorn quesadillas</a>";
 
     QString recipe;
 
     if (ui->yes_radio->isChecked() && ui->chinese_check->isChecked()) {
         recipe = vchineseRecipe;
-    } else if (ui->no_radio->isChecked()) {
+    } else if (ui->no_radio->isChecked() && ui->chinese_check->isChecked()) {
         recipe = chineseRecipe;
     }
 
     if (ui->yes_radio->isChecked() && ui->italian_check->isChecked()) {
         recipe = vitalianRecipe;
-    } else if (ui->no_radio->isChecked()) {
+    } else if (ui->no_radio->isChecked() && ui->italian_check->isChecked()) {
         recipe = italianRecipe;
     }
 
     if (ui->yes_radio->isChecked() && ui->mexican_check->isChecked()) {
         recipe = vmexicanRecipe;
-    } else if (ui->no_radio->isChecked()) {
+    } else if (ui->no_radio->isChecked() && ui->mexican_check->isChecked()) {
         recipe = mexicanRecipe;
     }
 
-    QMessageBox msgBox;
+    //displays recipe chosen
+    QMessageBox recipeBox;
         QFont font("Arial", 10, QFont::Bold);
-        msgBox.setFont(font);
+        recipeBox.setFont(font);
         msgBox.setText(recipe);
-        msgBox.exec();
+        recipeBox.exec();
 
 
 
@@ -134,23 +141,26 @@ void MainWindow::on_recipeButton_clicked()
 {
     showRecipe();
 
+    //create slider with range 0-10 with increments of 1
     QSlider *slider = new QSlider(Qt::Horizontal);
     slider->setRange(0, 10);
     slider->setTickInterval(1);
 
+    //create label for slider to ask user if they are satisfied with the recipe
     QLabel *sliderLabel = new QLabel("How satisfied are you with the recipe?");
     QFont font("Arial", 10, QFont::Bold);
     sliderLabel->setFont(font);
 
+    //creare box layout for slider and label
     QVBoxLayout *sliderLayout = new QVBoxLayout;
-
     sliderLayout->addWidget(sliderLabel);
     sliderLayout->addWidget(slider);
 
-    QDialog *dialog = new QDialog(this);
-    dialog->setLayout(sliderLayout);
+    QDialog *sDialog = new QDialog(this);
+    sDialog->setLayout(sliderLayout);
 
-    QObject::connect(slider, &QSlider::valueChanged, [=](int value){
+    //when slider value changes sliderLabel shows the current value
+    QObject::connect(slider, &QSlider::numChange, [=](int value){
     sliderLabel->setText(QString("How satisfied are you with the recipe? %1").arg(value));
     });
 
