@@ -128,7 +128,7 @@ void MainWindow::showRecipe()
     QMessageBox recipeBox;
         QFont font("Arial", 10, QFont::Bold);
         recipeBox.setFont(font);
-        msgBox.setText(recipe);
+        recipeBox.setText(recipe);
         recipeBox.exec();
 
 
@@ -156,15 +156,18 @@ void MainWindow::on_recipeButton_clicked()
     sliderLayout->addWidget(sliderLabel);
     sliderLayout->addWidget(slider);
 
-    QDialog *sDialog = new QDialog(this);
-    sDialog->setLayout(sliderLayout);
+    QDialog *dialog = new QDialog(this);
+    dialog->setLayout(sliderLayout);
 
     //when slider value changes sliderLabel shows the current value
-    QObject::connect(slider, &QSlider::numChange, [=](int value){
+    QObject::connect(slider, &QSlider::valueChanged, [=](int value){
     sliderLabel->setText(QString("How satisfied are you with the recipe? %1").arg(value));
     });
 
+
     dialog->exec();
+
+
 }
 
 
